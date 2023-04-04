@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rapid_landing/core/app_export.dart';
+import 'package:rapaid/core/app_export.dart';
 
 class AppDecoration {
   static BoxDecoration get fillGreenA700 => BoxDecoration(
