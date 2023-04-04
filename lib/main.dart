@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:rapaid/routes/app_routes.dart';
+import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
+import 'package:rapaid/splash_page.dart';
+
+final upiDetails = UPIDetails(upiID: "UPI ID", payeeName: "Payee Name", currencyCode: 'USD');
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,16 +14,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+   const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Rapaid',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         visualDensity: VisualDensity.standard,
       ),
-      title: 'rapaid_landing',
-      debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.landingScreen,
-      routes: AppRoutes.routes,
+      home: const SplashPage()
     );
   }
 }
+
