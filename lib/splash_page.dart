@@ -1,8 +1,7 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:rapaid/payments.dart';
 import 'package:rapaid/routes/app_routes.dart';
+import 'auth_service.dart';
 
 class SplashPage extends StatefulWidget {
 
@@ -21,7 +20,7 @@ class _SplashPageState extends State<SplashPage> {
       Navigator.pushReplacement(
         context, 
         MaterialPageRoute(
-          builder: (context) => const Payments() //Later we will have this redirect to the home page first
+          builder: (context) => AuthService().handleAuthState(), //Later we will have this redirect to the home page first
           ));
     });
   }

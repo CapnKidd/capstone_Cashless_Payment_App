@@ -1,70 +1,44 @@
+//Page to generate a QR code which contains data on the user reqesting funds, their userID and the transaction amount
+//Currently hardcoded with an example userID and transaction amount
+
+//The plan is for the user to input the amount and have their userID automatically included in the userID field when they request funds and
+//generate a QRcode
+
 import 'package:flutter/material.dart';
-import 'package:upi_payment_qrcode_generator/upi_payment_qrcode_generator.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
-final upiDetails = UPIDetails(upiID: "UPI ID", payeeName: "Payee Name", currencyCode: 'USD');
+class MyQRCode extends StatelessWidget {
+  final String userId;
+  final double transactionAmount;
 
-void main() {
-  runApp(const Payments());
-}
-
-/// Creates The UPI Payment QRCode
-class Payments extends StatefulWidget {
-  const Payments({Key? key}) : super(key: key);
-
-  @override
-  State<Payments> createState() => _MyPaymentsState();
-}
-
-class _MyPaymentsState extends State<Payments> {
-  final upiDetails = UPIDetails(
-      upiID: "9167877725@paytm",
-      payeeName: "Payee Name Here",
-      amount: 1,
-      transactionNote: "Hello World");
-  final upiDetailsWithoutAmount = UPIDetails(
-      upiID: "9167877725@paytm",
-      payeeName: "Agnel Selvan",
-      transactionNote: "Hello World");
+  MyQRCode({required this.userId, required this.transactionAmount});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('UPI Payment QRCode Generator'),
-        ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("UPI Payment QRCode without Amount",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              UPIPaymentQRCode(
-                upiDetails: upiDetailsWithoutAmount,
-                size: 200,
-                embeddedImagePath: 'assets/images/img_newlogo1.png',
-                embeddedImageSize: const Size(60, 60),
-              ),
-              Text(
-                "Scan QR to Pay",
-                style: TextStyle(color: Colors.grey[600], letterSpacing: 1.2),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Text("UPI Payment QRCode with Amount",
-                  style: TextStyle(fontWeight: FontWeight.bold)),
-              UPIPaymentQRCode(
-                upiDetails: upiDetails,
-                size: 200,
-                upiQRErrorCorrectLevel: UPIQRErrorCorrectLevel.low,
-              ),
-              Text(
-                "Scan QR to Pay",
-                style: TextStyle(color: Colors.grey[600], letterSpacing: 1.2),
-              ),
-            ],
-          ),
+    String data =
+        '{"user_id": "$userId", "transaction_amount": $transactionAmount}';
+    return QrImage(
+      data: data,
+      version: QrVersions.auto,
+      size: 200.0,
+    );
+  }
+}
+
+// Example usage of the MyQRCode widget with hardcoded recipient userID and transaction amount
+class ExampleUsage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("QR Code"),
+      ),
+      body: Center(
+        child: MyQRCode(
+          //Just a filler UserID, should automatically be filled in when a user clicks a button to display their QR code
+          userId: "123456",
+          //A filler amount hardcoded here but this will be inputted by the user requesting funds
+          transactionAmount: 50.0,
         ),
       ),
     );

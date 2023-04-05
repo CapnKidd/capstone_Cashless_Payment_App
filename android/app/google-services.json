@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "88828504757",
+    "firebase_url": "https://cashless-payments-8dff4-default-rtdb.firebaseio.com",
+    "project_id": "cashless-payments-8dff4",
+    "storage_bucket": "cashless-payments-8dff4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88828504757:android:76b1b215fbd42becc3acfc",
+        "android_client_info": {
+          "package_name": "com.example.cashless_payment_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "88828504757-s67sfnchm105edk1qkh4lda2cc4jlmq1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4W8PEZJHv0oqXWqCC_FHz2z1cW5D_EdA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "88828504757-s67sfnchm105edk1qkh4lda2cc4jlmq1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
